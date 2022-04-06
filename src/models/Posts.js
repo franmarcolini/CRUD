@@ -4,7 +4,7 @@ const connection = require('../connection')
 
 
 
-const createPost = (req,res)=>{
+const create = (req,res)=>{
     //    console.log(req.body)
         const data = req.body
         const sql = `insert into posts SET ${data}`
@@ -47,7 +47,7 @@ const deletePost = (req,res)=>{
 }
 
 module.exports = {
-    createPost, 
+    create, 
     updatePost, 
     deletePost
 }

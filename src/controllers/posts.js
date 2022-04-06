@@ -2,7 +2,7 @@
 const { query } = require('express')
 const connection = require('../connection')
 // const router = express.Router();
-
+const post = require('../models/Posts')
 
 
 const getPosts = (req,res)=>{
@@ -31,8 +31,8 @@ const getPost = (req,res)=>{
     })    
 }
 
-const getCreatePost = (req,res)=>{
-    res.render('create-post')
+const CreatePost = (req,res)=>{
+    return post.create(req, res);
 }
 
 
@@ -114,7 +114,7 @@ const getCreatePost = (req,res)=>{
 module.exports = {
     getPosts,
     getPost,
-    getCreatePost
+    CreatePost
     // getUpdatePost, 
     // getDeletePost,
     // createPost, 
