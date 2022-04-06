@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Modificar posteo</h1>
+    <form action="/posts/update/<%= post[0]['id'] %>" method="POST" >
+        <label for="title" >Titulo</label>
+        <input type="text" name="title" id="title" value="<%= post[0]['title'] %>" >
+        <label for="summary">Summary</label>
+        <textarea type="text" name="summary" id="summary" aria-valuetext="<%= post[0]['summary'] %>"></textarea>
+        <label for="created_at">FechaCreacion</label>
+        <input type="date" name="created_at" id="created_at" value="<%= post[0]['created_at'] %>">
+        <label for="update_at">FechaModificacion</label>
+        <input type="date" name="updated_at" id="updated_at" value="<%= post[0]['updated_at'] %>">
+        <input type="submit" value="Modificar">
+    </form></body>
+</html>
