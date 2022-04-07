@@ -7,17 +7,17 @@ router.get('/all', postController.getPosts)
 
 router.get('/:id', postController.getPost)
 
-router.post('/create', postController.getCreatePost)
+router.post('/create', postController.CreatePost)
 
-// router.put('/update/:id', postController.getUpdatePost)
+ router.put('/update/:id', postController.UpdatePost)
 
-// router.delete('/delete/:id', postController.getDeletePost)
+ router.delete('/delete/:id', postController.DeletePost)
 
-router.post('/create', postModels.createPost)
+// router.post('/create', postModels.createPost)
 
-router.put('/update/:id', postModels.updatePost)
+// router.put('/update/:id', postModels.updatePost)
 
-router.delete('/delete/:id', postModels.deletePost)
+// router.delete('/delete/:id', postModels.deletePost)
 
 
 

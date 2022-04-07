@@ -1,11 +1,25 @@
 const { query } = require('express')
 const connection = require('../connection')
+const {mydatabase} = require('../config')
 
 
 
+const allPosts = (req, res)=>{   
+    
+    const sql = `select * from posts`
+    connection.query(sql, (err, result)=>{
+        if(err){
+            console.log('Ha ocurrido un error')
+        }else{
+            console.log(result)       
+            res.render('posts', {posts: result})   
+        }       
+    })  
+}
 
 const create = (req,res)=>{
     //    console.log(req.body)
+        res.render('create-post')
         const data = req.body
         const sql = `insert into posts SET ${data}`
         
@@ -13,13 +27,16 @@ const create = (req,res)=>{
             if(err){
                 console.log('Ha ocurrido un error')
             }else{
+               
                 console.log('Posteo cargado')
+               
                 res.redirect('/posts/all', {posts:result})
             }
         })
     }
 
-const updatePost = (req,res)=>{
+const update = (req,res)=>{
+    res.render('update-post')
     const param = req.params.id
     const sql = `update posts SET title='${req.param.title}', summary='${req.param.summary}', 
     created_at='${req.param.created_at}', updated_at='${req.param.updated_at}' where id='${param}' `
@@ -33,7 +50,8 @@ const updatePost = (req,res)=>{
     })
    
 }
-const deletePost = (req,res)=>{
+const deleteP = (req,res)=>{
+    res.render('delete-post')
     const param = req.params.id
     const sql = `delete from posts where id=${param}`
     connection.query(sql, (err, result)=>{
@@ -47,9 +65,10 @@ const deletePost = (req,res)=>{
 }
 
 module.exports = {
+    allPosts,
     create, 
-    updatePost, 
-    deletePost
+    update, 
+    deleteP
 }
 
 

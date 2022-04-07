@@ -7,15 +7,7 @@ const post = require('../models/Posts')
 
 const getPosts = (req,res)=>{
 
-    const sql = 'select * from posts'
-    connection.query(sql, (err, result)=>{
-        if(err){
-            console.log('Ha ocurrido un error')
-        }else{
-            console.log(result)
-            res.render('posts', {posts: result}) 
-        }       
-    })    
+   return post.allPosts(req, res);  
 }
 
 const getPost = (req,res)=>{
@@ -31,28 +23,18 @@ const getPost = (req,res)=>{
     })    
 }
 
-const CreatePost = (req,res)=>{
+const CreatePost = (req,res)=>{  
     return post.create(req, res);
 }
 
 
-// const getUpdatePost = (req,res)=>{
-//     const param = req.params.id
-//     const sql = 'select * from posts where id=?'
-//     connection.query(sql, param, (err, result)=>{
+const UpdatePost = (req,res)=>{
+    return post.update(req,res);    
+}
 
-//         // var querySQL = sql.Where(c=> c.created_at == '20220218') 
-//         if(err){
-//             console.log('Ha ocurrido un error' + err)
-//         }else{
-//             console.log(result)
-//             res.render('update-post', {posts :result})
-//         }
-//     })
-    
-// }
-
-
+const DeletePost = (req, res)=>{
+    return post.deleteP(req,res);
+}
 
 // const getDeletePost = (req,res)=>{
 //     const param = req.params.id
@@ -114,9 +96,9 @@ const CreatePost = (req,res)=>{
 module.exports = {
     getPosts,
     getPost,
-    CreatePost
-    // getUpdatePost, 
-    // getDeletePost,
+    CreatePost,
+    UpdatePost, 
+    DeletePost
     // createPost, 
     // updatePost, 
     // deletePost
