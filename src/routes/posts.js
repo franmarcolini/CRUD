@@ -3,7 +3,7 @@ const router = express.Router()
 const postController = require('../controllers/posts')
 const postModels = require('../models/Posts')
 
-router.get('/all', postController.getPosts)
+router.get('/all', postController.getAll)
 
 router.get('/:id', postController.getPost)
 

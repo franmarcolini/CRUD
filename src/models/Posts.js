@@ -4,9 +4,9 @@ const {mydatabase} = require('../config')
 
 
 
-const allPosts = (req, res)=>{   
+const Posts = (req, res)=>{   
     
-    const sql = `select * from posts`
+    const sql = `select * from posts `
     connection.query(sql, (err, result)=>{
         if(err){
             console.log('Ha ocurrido un error')
@@ -17,11 +17,26 @@ const allPosts = (req, res)=>{
     })  
 }
 
+const idPost = (req, res)=>{
+   
+    const param = req.params.idPost
+    res.render('posts')
+    const sql = `select * from posts where idPost = ${param.idPost}`
+    connection.query(sql, (err, result)=>{
+        if(err){
+            console.log(err)
+        }else{
+            console.log('Redireccionando al posteo')
+            res.redirect('/posts/post', {posts:result})
+        }
+    })
+}
+
 const create = (req,res)=>{
-    //    console.log(req.body)
+//console.log(req.body)
         res.render('create-post')
         const data = req.body
-        const sql = `insert into posts SET ${data}`
+        const sql = `insert into posts SET ?`
         
         connection.query(sql, data, (err, result)=>{
             if(err){
@@ -53,7 +68,7 @@ const update = (req,res)=>{
 const deleteP = (req,res)=>{
     res.render('delete-post')
     const param = req.params.id
-    const sql = `delete from posts where id=${param}`
+    const sql = `delete from posts where id=?`
     connection.query(sql, (err, result)=>{
         if(err){
             console.log('Ha ocurrido un error' +err)
@@ -65,7 +80,8 @@ const deleteP = (req,res)=>{
 }
 
 module.exports = {
-    allPosts,
+    Posts,
+    idPost,
     create, 
     update, 
     deleteP

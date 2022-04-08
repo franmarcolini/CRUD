@@ -1,26 +1,18 @@
 // const express = require('express')
-const { query } = require('express')
+const { query } = require('express');
+
 const connection = require('../connection')
 // const router = express.Router();
 const post = require('../models/Posts')
 
 
-const getPosts = (req,res)=>{
+const getAll = (req,res)=>{
 
-   return post.allPosts(req, res);  
+   return post.Posts(req, res);  
 }
 
 const getPost = (req,res)=>{
-    const param = req.params.id
-    const sql = 'select * from posts where id=?'
-    connection.query(sql, (err, result)=>{
-        if(err){
-            console.log('Ha ocurrido un error')
-        }else{
-            console.log(result)
-            res.render('/posts/:id', {posts: result}) 
-        }       
-    })    
+   return post.idPost(req,res);    
 }
 
 const CreatePost = (req,res)=>{  
@@ -94,7 +86,7 @@ const DeletePost = (req, res)=>{
 
 
 module.exports = {
-    getPosts,
+    getAll,
     getPost,
     CreatePost,
     UpdatePost, 
