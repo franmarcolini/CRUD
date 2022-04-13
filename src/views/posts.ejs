@@ -20,13 +20,13 @@
         </tr>
       <%  posts.forEach((post)=>{ %>
             <tr>
-                <td><%= post.id %></td>
+                <td><%= post.idPost %></td>
                 <td><%= post.title %></td>
                 <td><%= post.summary %></td>
                 <td><%= post.created_at %></td>
                 <td><%= post.updated_at %></td>
-                <td><a id="btnupdate" href="/posts/update/<%= post.id %>">Modificar</a></td>  
-                <td><a id="btndelete" href="/posts/delete/<%= post.id %>">Eliminar</a></td>
+                <td><a id="btnupdate" href="/posts/update/<%= post.idPost %>">Modificar</a></td>  
+                <td><a id="btndelete" href="/posts/delete/<%= post.idPost %>">Eliminar</a></td>
             </tr>
       <%  }) %>
     </table>

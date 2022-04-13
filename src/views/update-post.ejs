@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Modificar posteo</h1>
-    <form action="/posts/update/<%= post[0]['id'] %>" method="POST" >
+    <form action="/posts/update/<%= post[0]['idPost'] %>" method="POST" >
         <label for="title" >Titulo</label>
         <input type="text" name="title" id="title" value="<%= post[0]['title'] %>" >
         <label for="summary">Summary</label>

@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const postController = require('../controllers/posts')
-const postModels = require('../models/Posts')
+// const postModels = require('../models/Posts')
 
 router.get('/all', postController.getAll)
 
@@ -18,9 +18,6 @@ router.post('/create', postController.CreatePost)
 // router.put('/update/:id', postModels.updatePost)
 
 // router.delete('/delete/:id', postModels.deletePost)
-
-
-
 
 
 module.exports = router

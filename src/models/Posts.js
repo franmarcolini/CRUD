@@ -6,28 +6,32 @@ const {mydatabase} = require('../config')
 
 const Posts = (req, res)=>{   
     
-    const sql = `select * from posts `
-    connection.query(sql, (err, result)=>{
+    const sql = 'select * from `posts`'
+    connection.query(sql, async(err, result)=>{
         if(err){
             console.log('Ha ocurrido un error')
         }else{
             console.log(result)       
-            res.render('posts', {posts: result})   
+            res.send(result)
+            // res.render('posts', {posts: result})   
         }       
     })  
 }
 
+
+
 const idPost = (req, res)=>{
    
-    const param = req.params.idPost
+    // const param = req.params.idPost
     res.render('posts')
-    const sql = `select * from posts where idPost = ${param.idPost}`
-    connection.query(sql, (err, result)=>{
+    const param = req.params.idPost
+    const sql = `select * from 'posts'where idPost = '${param}'`
+    connection.query(sql, async(err, result)=>{
         if(err){
             console.log(err)
         }else{
             console.log('Redireccionando al posteo')
-            res.redirect('/posts/post', {posts:result})
+            res.send('/posts/' + param)
         }
     })
 }
@@ -36,15 +40,15 @@ const create = (req,res)=>{
 //console.log(req.body)
         res.render('create-post')
         const data = req.body
-        const sql = `insert into posts SET ?`
+        const sql = 'insert into `posts` SET ?'
         
-        connection.query(sql, data, (err, result)=>{
+        connection.query(sql, data, async(err, result)=>{
             if(err){
                 console.log('Ha ocurrido un error')
             }else{
                
                 console.log('Posteo cargado')
-               
+            //    res.send(result)
                 res.redirect('/posts/all', {posts:result})
             }
         })
@@ -52,14 +56,15 @@ const create = (req,res)=>{
 
 const update = (req,res)=>{
     res.render('update-post')
-    const param = req.params.id
-    const sql = `update posts SET title='${req.param.title}', summary='${req.param.summary}', 
-    created_at='${req.param.created_at}', updated_at='${req.param.updated_at}' where id='${param}' `
-    connection.query(sql, (err, result)=>{
+    
+    const sql = `update 'posts' SET 'idPost='${req.params.idPost} title='${req.params.title}', summary='${req.params.summary}', 
+    created_at='${req.params.created_at}', updated_at='${req.params.updated_at}' where id='${req.params.idPost}' `
+    connection.query(sql, async(err, result)=>{
         if(err){
             console.log('Ha ocurrido un error')
         }else{
             console.log('Posteo modificado')
+            res.send(result)
             res.redirect('/posts/all')
         }
     })
@@ -67,13 +72,14 @@ const update = (req,res)=>{
 }
 const deleteP = (req,res)=>{
     res.render('delete-post')
-    const param = req.params.id
-    const sql = `delete from posts where id=?`
-    connection.query(sql, (err, result)=>{
+    const param = req.params.idPost
+    const sql = `delete from 'posts' where 'idPost'=${param}`
+    connection.query(sql, async(err, result)=>{
         if(err){
             console.log('Ha ocurrido un error' +err)
         }else{
             console.log('Posteo Eliminado')
+            res.send(result)
             res.redirect('/posts/all')
         }
     })
