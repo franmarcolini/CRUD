@@ -9,16 +9,17 @@
 </head>
 <body>
     <h1>Crear Posteo</h1>
-    <form action="/posts/create" method="POST" >        
-        <label for="title" >Titulo</label>
-        <input type="text" name="title" id="title" >
-        <label for="summary">Summary</label>
-        <textarea type="text" name="summary" id="summary" rows="10" cols="15" ></textarea>
-        <label for="created_at">FechaCreacion</label>
-        <input type="date" name="created_at" id="created_at">
-        <label for="updated_at">FechaModificacion</label>
-        <input type="date" name="updated_at" id="updated_at">
-        <input type="submit" value="Cargar">
+    <form action="/posts" method="POST" >   
+ 
+        <label for="Title" >Titulo</label>
+        <input type="text" name="Title" id="Title">
+        <label for="Summary">Summary</label>
+        <textarea type="text" name="Summary" id="Summary" ></textarea>
+        <label for="Created_at">FechaCreacion</label>
+        <input type="date" name="Created_at" id="Created_at">
+        <label for="Updated_at">FechaModificacion</label>
+        <input type="date" name="Updated_at" id="Updated_at">
+        <button class="btn btn-primary" type="submit">Upload</button> 
     </form>
     
 </body>

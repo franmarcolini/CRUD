@@ -1,5 +1,6 @@
 // const express = require('express')
 const { query } = require('express');
+const { redirect } = require('express/lib/response');
 
 const connection = require('../connection')
 // const router = express.Router();
@@ -15,9 +16,12 @@ const getPost = (req,res)=>{
    return post.idPost(req,res);    
 }
 
-const CreatePost = (req,res)=>{  
+const CreatePost = (req,res)=>{ 
+    res.render('create-post');
     return post.create(req, res);
+    
 }
+
 
 
 const UpdatePost = (req,res)=>{

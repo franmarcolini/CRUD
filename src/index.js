@@ -16,8 +16,10 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 //middleware
 //app.use(postedMiddleware.isPosted)
-app.use(express.static(path.join(__dirname, 'public')))
-app.use(express.urlencoded({extended:false}))
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 
 //rutas 
@@ -26,6 +28,7 @@ app.get('/', (req,res)=>{ //ruta inicial
 })
  
 app.use('/posts', (post))
+
 
 app.listen(app.get('port'), ()=>{
     console.log('Mi ' + app.get('title')+' esta corriendo en el puerto ' + app.get('port'))
