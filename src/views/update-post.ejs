@@ -5,18 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel = "stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
 </head>
 <body>
-    <h1>Modificar posteo</h1>
-    <form action="/posts/update/<%= post[0]['idPost'] %>" method="POST" >
-        <label for="Title" >Titulo</label>
-        <input type="text" name="Title" id="Title" value="<%= post[0]['Title'] %>" >
-        <label for="Summary">Summary</label>
-        <textarea type="text" name="Summary" id="Summary" aria-valuetext="<%= post[0]['Summary'] %>"></textarea>
-        <label for="Created_at">FechaCreacion</label>
-        <input type="date" name="Created_at" id="Created_at" value="<%= post[0]['Created_at'] %>">
-        <label for="Update_at">FechaModificacion</label>
-        <input type="date" name="Updated_at" id="Updated_at" value="<%= post[0]['Updated_at'] %>">
-        <input type="submit" value="Modificar">
-    </form></body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="/posts" class="navbar-brand">NodeJS POSTS</a>
+    </nav>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-7">
+
+            </div>
+        </div>
+    </div>   
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="body-card">
+                        <h1>Edit Post</h1>
+                        <form action="/update/<%= data.idPost %> " method="PUT" >
+                            <div class="form-group">
+                                <label for="Title" >Title</label>
+                                <input type="text" name="Title" value="<%= data.Title %>" class="form-control" id="Title" >
+                            </div>
+                            <div class="form-group">
+                                <label for="Summary">Summary</label>
+                                <textarea type="text" name="Summary" aria-valuetext="<%= data.Summary %>" class="form-control" id="Summary" ></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="Created_at">Created</label>
+                                <input type="date" name="Created_at" value="<%= data.Created_at %>" class="form-control" id="Created_at">
+                            </div>
+                            <div class="form-group">
+                                <label for="Updated_at">Updated</label>
+                                <input type="date" name="Updated_at" value="<%= data.Updated_at %>" id="Updated_at" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                EDIT POST
+                            </button>                           
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+   
+</body>
 </html>

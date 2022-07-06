@@ -3,47 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=devide-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel = "stylesheet" href="/css/style.css">
+    <title>BLOG</title>
+    <link rel = "stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
 </head>
 <body>
 
-    <div class="container">
-        <br/>
-        <br/>
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="/posts" class="navbar-brand">NodeJS POSTS</a>
+    </nav>
+    <div>
+        
+        <button onclick="location.href='http://127.0.0.1:4000/create'">           
+            NEW</button>
+    </div> 
+   
 
-        <a href="/posts/create" class="btn btn-primary" type="button">Crear un nuevo posteo</a>
-        <br/>
-        <br/>
-        <h1>Todos los posteos</h1>
-        <table>
+ <div class="container">
+   <div class="row mt-5">
+       <div class="col-md-7">
+        <h1>POSTS</h1>
+        <table class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>N°</th>
+                <th>id</th>
                 <th>Title</th>
                 <th>Summary</th>
-                <th>FechaCreacion</th>
-                <th>FechaModificacion</th>
-                <th>Modificar</th>
-                <th>Eliminar</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Update Post</th>
+                <th>Delete Post</th>
             </tr>
-        </thead>
-            <tbody>
-                <%  posts.forEach((post)=>{ %>
+        </thead>     
+                <% if (data) {%>
+                    <% for (var i = 0; i < data.length; i++) {%>
                     <tr>
-                        <td><%= post.idPost %></td>
-                        <td><%= post.Title %></td>
-                        <td><%= post.Summary %></td>
-                        <td><%= post.Created_at %></td>
-                        <td><%= post.Updated_at %></td>
-                        <td><a id="btnupdate" href="/posts/update/<%= post.idPost %>">Modificar</a></td>  
-                        <td><a id="btndelete" href="/posts/delete/<%= post.idPost %>">Eliminar</a></td>
-                    </tr>
-              <%  }) %>
-            </tbody>
-          
+                        <td><%= (i + 1) %></td> 
+                        <td><%= data[i].idPost %></td> 
+                       <td><%= data[i].Title %></td> 
+                       <td><%= data[i].Summary %></td>
+                        <td><%= data[i].Created_at %></td>
+                        <td><%= data[i].Updated_at %></td>
+                        <td>
+                            <a class="btn btn-info" id="btn-update" href="http://127.0.0.1:4000/update/<%= data[i].idPost %>">UPDATE</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" href="http://127.0.0.1:4000/delete/<%= data[i].idPost %>">DELETE</a>
+                        </td>
+                        
+                    </tr>                    
+            <% }%>    
+        <% }%>                                        
         </table>
-    </div>
-    
+
+       </div>   
+   </div>    
+</div>     
+</div>      
 </body>
 </html>

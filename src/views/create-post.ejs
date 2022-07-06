@@ -4,23 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Post</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
 </head>
+    
 <body>
-    <h1>Crear Posteo</h1>
-    <form action="/posts" method="POST" >   
- 
-        <label for="Title" >Titulo</label>
-        <input type="text" name="Title" id="Title">
-        <label for="Summary">Summary</label>
-        <textarea type="text" name="Summary" id="Summary" ></textarea>
-        <label for="Created_at">FechaCreacion</label>
-        <input type="date" name="Created_at" id="Created_at">
-        <label for="Updated_at">FechaModificacion</label>
-        <input type="date" name="Updated_at" id="Updated_at">
-        <button class="btn btn-primary" type="submit">Upload</button> 
-    </form>
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="/posts" class="navbar-brand">NodeJS POSTS</a>
+    </nav>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-7">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <h1>New Post</h1>
+        <form href="/create"  method="POST" >       
+            <div class="form-group">   
+                <label for="Title" >Title</label>
+                <input type="text" class="form-control" placeholder="Title" name="Title" id="Title" >
+            </div> 
+            <div class="form-group">
+                <label for="Summary">Summary</label>
+                <textarea type="text" class="form-control" placeholder="Summary" name="Summary" id="Summary" ></textarea>
+            </div>
+            <div class="form-group">
+                <label for="Created_at">Created    </label>
+                <input type="date" class="form-control" placeholder="Created_at" name="Created_at" id="Created_at">
+            </div>
+            <div class="form-group">
+                <label for="Updated_at">Updated   </label>
+            <input type="date" class="form-control" placeholder="Updated_at" name="Updated_at" id="Updated_at">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success"  type="submit" > SAVE POST</button>
+            </div>
+        </form>
+            </div>
+        </div>
+            
+    </div> 
     
 </body>
-</html>
+</html> 

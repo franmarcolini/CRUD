@@ -1,6 +1,27 @@
 const { query } = require('express')
 const connection = require('../connection')
 
+class data {
+    idImage = Number;
+    URL = Blob;
+    idPost = Number;    
+}
+
+
+const Images =  (req, res)=>{    
+    
+    const sql = 'select * from images'
+    connection.query(sql, function(err, result){
+        if(err){
+            console.log('Ha ocurrido un error')
+        }else{
+            console.log(result)       
+           
+            res.render('images', {data: result})   
+        }       
+    })  
+}
+
 
 const createImage = (req,res)=>{
     //    console.log(req.body)

@@ -8,10 +8,10 @@
 </head>
 <body>
     <h1>Eliminar posteo</h1>
-    <form action="/posts/delete/<%= post[0]['idPost'] %>" method="POST" >
+    <form action="/delete/<%= data.idPost %>" method="POST" >
         <h2>Desea eliminar este post?</h2>
-        <a id="btnupdate" href="/posts/all"></a>
+        <a id="btnupdate" href="/posts"></a>
         <input id="btndelete" type="submit" value="Si, eliminar"> 
     </form>
 </body>
-</html>
+</html> 

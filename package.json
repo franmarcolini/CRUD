@@ -11,13 +11,16 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
     "ejs": "^3.1.6",
     "express": "^4.17.3",
     "express-myconnection": "^1.0.4",
     "git": "^0.1.5",
+    "morgan": "^1.10.0",
     "mssql": "^8.0.2",
     "mysql": "^2.18.1",
-    "sequelize": "^6.16.2"
+    "sequelize": "^6.16.2",
+    "swagger": "^0.7.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
